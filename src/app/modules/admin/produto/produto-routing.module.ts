@@ -5,7 +5,11 @@ import { ProdutoEditComponent } from './produto-edit/produto-edit.component';
 
 const routes: Routes = [
   {
-    path: 'alterar',
+    path: 'cadastrar',
+    component: ProdutoEditComponent
+  },
+  {
+    path: 'alterar/:id',
     component: ProdutoEditComponent
   },
   {
