@@ -12,8 +12,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren:  () => import('src/app/modules/area-publica/area-publica.module').then(m => m.AreaPublicaModule)
+    loadChildren:  () => import('src/app/modules/login/login.module').then(m => m.LoginModule)
   },
+  /*{
+    path: '',
+    loadChildren:  () => import('src/app/modules/area-publica/area-publica.module').then(m => m.AreaPublicaModule)
+  },*/
 ];
 
 @NgModule({

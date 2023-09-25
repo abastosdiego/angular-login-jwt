@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     var token = localStorage.getItem('access_token');
     var token_type = localStorage.getItem('token_type');
 
-    if (token) {
+    if (token && token_type) {
       console.log(`token: ${token}`);
       const authRequest = request.clone({
         setHeaders: {
