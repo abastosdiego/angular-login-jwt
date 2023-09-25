@@ -6,6 +6,10 @@ import { TipoProdutoEditComponent } from './tipo-produto/tipo-produto-edit/tipo-
 
 const routes: Routes = [
   {
+    path: 'produto',
+    loadChildren: () => import('./produto/produto.module').then(mod => mod.ProdutoModule),
+  },
+  {
     path: 'tiposprodutos/:id',
     component: TipoProdutoEditComponent
   },
