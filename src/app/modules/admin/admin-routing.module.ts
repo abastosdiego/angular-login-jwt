@@ -1,6 +1,5 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { usuarioLogadoGuard } from '../../guards/usuario-logado.guard';
 
 const routes: Routes = [
   {
