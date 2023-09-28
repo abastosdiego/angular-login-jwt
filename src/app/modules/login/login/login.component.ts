@@ -14,7 +14,10 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
   logar() {
+
     if(this.email && this.senha) {
+      console.log(this.email);
+      console.log(this.senha);
       this.loginService.login(this.email, this.senha);
       this.router.navigate(['/admin']);
     }
