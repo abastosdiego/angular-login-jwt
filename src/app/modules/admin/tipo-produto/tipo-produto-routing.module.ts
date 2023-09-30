@@ -5,11 +5,11 @@ import { TipoProdutoListComponent } from './tipo-produto-list/tipo-produto-list.
 
 const routes: Routes = [
   {
-    path: 'cadastrar',
+    path: 'novo',
     component: TipoProdutoEditComponent
   },
   {
-    path: 'alterar/:id',
+    path: ':id',
     component: TipoProdutoEditComponent
   },
   {

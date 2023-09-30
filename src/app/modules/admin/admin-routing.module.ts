@@ -1,11 +1,11 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BaseTemplateComponent } from './base-template/base-template.component';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {
     path:'',
-    component: BaseTemplateComponent,
+    component: AdminComponent,
     children: [
       {
         path: 'produtos',

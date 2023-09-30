@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { BaseTemplateComponent } from './base-template/base-template.component';
+import { AdminComponent } from './admin.component';
 
 @NgModule({
   declarations: [
-  
-    BaseTemplateComponent
+       AdminComponent,
   ],
   imports: [
     CommonModule,

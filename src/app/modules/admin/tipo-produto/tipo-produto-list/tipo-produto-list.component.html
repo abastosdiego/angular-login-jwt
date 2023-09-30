@@ -1,1 +1,16 @@
-<p>tipo-produto-list works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Descricao</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tipoProduto of tiposProdutos;">
+      <th scope="row">{{tipoProduto.descricao}}</th>
+      <td><a routerLink="/admin/tiposprodutos/{{tipoProduto.id}}">Editar</a></td>
+      <td><a>Excluir</a></td>
+    </tr>
+  </tbody>
+</table>

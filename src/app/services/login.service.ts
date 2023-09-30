@@ -13,6 +13,10 @@ export class LoginService {
     return localStorage.getItem('access_token');
   }
 
+  getTokenType() {
+    return localStorage.getItem('token_type');
+  }
+
   login(email: string, senha:string) {
 
     const url = 'http://localhost:8000/api/login';
