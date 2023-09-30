@@ -10,24 +10,22 @@ import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
   styleUrls: ['./tipo-produto-edit.component.css']
 })
 export class TipoProdutoEditComponent implements OnInit {
-  tipoProduto?: TipoProduto;
+  tipoProduto: TipoProduto;
   inscricaoObservable!: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private tipoProdutoService: TipoProdutoService){
-
+    this.tipoProduto = new TipoProduto();
   }
 
   ngOnInit(): void {
     var id = this.activatedRoute.snapshot.params['id'];
-    this.inscreverObservable();
-    this.tipoProdutoService.getTipoProduto(id);
-  }
-
-  inscreverObservable() {
-    this.inscricaoObservable = this.tipoProdutoService.getResultTipoProduto().subscribe(response => {
-      console.log(response);
-      this.tipoProduto = response
-    });
+    console.log(`id: ${id}`);
+    if(id) {
+      this.tipoProdutoService.getTipoProduto(id)
+        .subscribe(response => {
+          this.tipoProduto = response;
+        });
+    }
   }
 
 }

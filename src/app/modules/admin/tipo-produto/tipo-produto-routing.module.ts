@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: '',
     component: TipoProdutoListComponent
+  },
+  {
+    path: '**',
+    component: TipoProdutoListComponent
   }
 ];
 

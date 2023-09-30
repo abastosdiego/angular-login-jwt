@@ -17,7 +17,7 @@ export class LoginComponent {
 
     if(this.email && this.senha) {
       console.log(this.email);
-      console.log(this.senha);
+      //console.log(this.senha);
       this.loginService.login(this.email, this.senha);
       this.router.navigate(['/admin']);
     }

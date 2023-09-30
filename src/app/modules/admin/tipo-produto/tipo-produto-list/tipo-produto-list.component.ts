@@ -15,14 +15,10 @@ export class TipoProdutoListComponent implements OnInit {
   constructor(private tipoProdutoService: TipoProdutoService) {}
 
   ngOnInit(): void {
-    this.inscreverObservable();
-    this.tipoProdutoService.getTiposProdutos();
-  }
-
-  inscreverObservable() {
-    this.inscricaoObservable = this.tipoProdutoService.getResultsTiposProdutos().subscribe(response => {
-      this.tiposProdutos = response
-    });
+    this.tipoProdutoService.getTiposProdutos()
+      .subscribe(response => {
+        this.tiposProdutos = response;
+      });
   }
 
 }

@@ -1,2 +1,16 @@
-<p>tipo-produto-edit works!</p>
-{{tipoProduto?.descricao}}
+<form class="row g-3" #myForm="ngForm">
+  <input type="hidden" name="id" id="id" value="{{tipoProduto.id}}" />
+  <div class="col-md-8">
+    <label for="descricao" class="form-label">Descrição</label>
+    <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="tipoProduto.descricao">
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-12">
+    <ng-template [ngIf]="tipoProduto">
+      <button type="submit" class="btn btn-primary">Editar</button>
+    </ng-template>
+    <ng-template #elseBlock>
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </ng-template>
+  </div>
+</form>
