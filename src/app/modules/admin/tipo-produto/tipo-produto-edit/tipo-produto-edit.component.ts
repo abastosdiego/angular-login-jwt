@@ -12,19 +12,33 @@ import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
 export class TipoProdutoEditComponent implements OnInit {
   tipoProduto: TipoProduto;
   inscricaoObservable!: Subscription;
+  id?: number;
+  mensagemSucesso: string = '';
 
   constructor(private activatedRoute: ActivatedRoute, private tipoProdutoService: TipoProdutoService){
     this.tipoProduto = new TipoProduto();
+    this.id = this.activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit(): void {
-    var id = this.activatedRoute.snapshot.params['id'];
-    console.log(`id: ${id}`);
-    if(id) {
-      this.tipoProdutoService.getTipoProduto(id)
+    console.log(`id: ${this.id}`);
+    if(this.id) {
+      this.tipoProdutoService.getTipoProduto(this.id)
         .subscribe(response => {
           this.tipoProduto = response;
         });
+    }
+  }
+
+  cadastrar() {
+
+  }
+
+  editar() {
+    if(this.id){
+      this.tipoProdutoService.alterarTipoProduto(this.tipoProduto, this.id).subscribe(response => {
+        console.log(response);
+      })
     }
   }
 

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: TipoProdutoEditComponent
   },
   {
-    path: ':id',
+    path: 'editar/:id',
     component: TipoProdutoEditComponent
   },
   {

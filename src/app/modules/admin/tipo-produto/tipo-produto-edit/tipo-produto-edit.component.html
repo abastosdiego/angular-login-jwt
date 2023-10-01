@@ -1,4 +1,7 @@
-<form class="row g-3" #myForm="ngForm">
+<div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+  {{mensagemSucesso}}
+</div>
+<form class="row g-3">
   <input type="hidden" name="id" id="id" value="{{tipoProduto.id}}" />
   <div class="col-md-8">
     <label for="descricao" class="form-label">Descrição</label>
@@ -7,10 +10,10 @@
   <div class="col-md-4"></div>
   <div class="col-12">
     <ng-template [ngIf]="tipoProduto">
-      <button type="submit" class="btn btn-primary">Editar</button>
+      <button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
     </ng-template>
     <ng-template #elseBlock>
-      <button type="submit" class="btn btn-primary">Cadastrar</button>
+      <button type="button" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
     </ng-template>
   </div>
 </form>

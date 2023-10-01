@@ -9,7 +9,7 @@
   <tbody>
     <tr *ngFor="let tipoProduto of tiposProdutos;">
       <th scope="row">{{tipoProduto.descricao}}</th>
-      <td><a routerLink="/admin/tiposprodutos/{{tipoProduto.id}}">Editar</a></td>
+      <td><a routerLink="/admin/tiposprodutos/editar/{{tipoProduto.id}}">Editar</a></td>
       <td><a>Excluir</a></td>
     </tr>
   </tbody>

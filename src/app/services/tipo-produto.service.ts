@@ -32,4 +32,8 @@ export class TipoProdutoService {
     return this.http.get<TipoProduto>(`${this.baseURL}/tiposprodutos/${id}`, this.httpOptions);
   }
 
+  alterarTipoProduto(tipoProduto: TipoProduto, id: number): Observable<TipoProduto> {
+    return this.http.put(`${this.baseURL}/tiposprodutos/${id}`, tipoProduto, this.httpOptions)
+  }
+
 }
