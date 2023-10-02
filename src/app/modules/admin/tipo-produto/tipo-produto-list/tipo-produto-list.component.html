@@ -1,16 +1,15 @@
+<button type="button" class="btn btn-primary" routerLink="/admin/tiposprodutos/cadastrar">Cadastrar</button>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Descricao</th>
-      <th scope="col">Editar</th>
-      <th scope="col">Excluir</th>
+      <th scope="col" class="text-end">Editar</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let tipoProduto of tiposProdutos;">
-      <th scope="row">{{tipoProduto.descricao}}</th>
-      <td><a routerLink="/admin/tiposprodutos/editar/{{tipoProduto.id}}">Editar</a></td>
-      <td><a>Excluir</a></td>
+      <th scope="row"><a routerLink="/admin/tiposprodutos/editar/{{tipoProduto.id}}">{{tipoProduto.descricao}}</a></th>
+      <td class="text-end"><a routerLink="/admin/tiposprodutos/editar/{{tipoProduto.id}}">Editar</a></td>
     </tr>
   </tbody>
 </table>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TipoProduto } from 'src/app/models/tipo-produto-model';
 import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
@@ -15,7 +15,7 @@ export class TipoProdutoEditComponent implements OnInit {
   id?: number;
   mensagemSucesso: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private tipoProdutoService: TipoProdutoService){
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private tipoProdutoService: TipoProdutoService){
     this.tipoProduto = new TipoProduto();
     this.id = this.activatedRoute.snapshot.params['id'];
   }
@@ -31,13 +31,26 @@ export class TipoProdutoEditComponent implements OnInit {
   }
 
   cadastrar() {
-
+      this.tipoProdutoService.cadastrarTipoProduto(this.tipoProduto).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/admin/tiposprodutos']);
+      })
   }
 
   editar() {
     if(this.id){
       this.tipoProdutoService.alterarTipoProduto(this.tipoProduto, this.id).subscribe(response => {
         console.log(response);
+        this.router.navigate(['/admin/tiposprodutos']);
+      })
+    }
+  }
+
+  excluir() {
+    if(this.id){
+      this.tipoProdutoService.excluirTipoProduto(this.id).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/admin/tiposprodutos']);
       })
     }
   }

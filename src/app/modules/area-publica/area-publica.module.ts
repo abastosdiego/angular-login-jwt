@@ -6,16 +6,18 @@ import { IndexComponent } from './index/index.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/interceptors/token.interceptor';
 import { BaseTemplateComponent } from './base-template/base-template.component';
+import { TipoProdutoModule } from './tipo-produto/tipo-produto.module';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
-    BaseTemplateComponent
+    BaseTemplateComponent,
   ],
   imports: [
     CommonModule,
-    AreaPublicaRoutingModule
+    AreaPublicaRoutingModule,
+    TipoProdutoModule
   ],
   providers: [
     {

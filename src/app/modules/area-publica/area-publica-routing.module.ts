@@ -14,6 +14,10 @@ const routes: Routes = [
       }
     ]
   },
+  /*{
+    path:'tipos-produtos',
+    loadChildren: () => import('./tipo-produto/tipo-produto.module').then(mod => mod.TipoProdutoModule),
+  }*/
 
 ];
 

@@ -2,17 +2,26 @@
   {{mensagemSucesso}}
 </div>
 <form class="row g-3">
-  <input type="hidden" name="id" id="id" value="{{tipoProduto.id}}" />
+  <ng-template [ngIf]="id">
+    <input type="hidden" name="id" id="id" value="{{tipoProduto.id}}" />
+  </ng-template>
   <div class="col-md-8">
     <label for="descricao" class="form-label">Descrição</label>
     <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="tipoProduto.descricao">
   </div>
   <div class="col-md-4"></div>
-  <div class="col-12">
-    <ng-template [ngIf]="tipoProduto">
-      <button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+  <div class="col-md-12">
+    <ng-template [ngIf]="id">
+      <div class="row">
+        <div class="col-md-1">
+          <button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-danger" (click)="excluir()">Excluir</button>
+        </div>
+      </div>
     </ng-template>
-    <ng-template #elseBlock>
+    <ng-template [ngIf]="id === undefined">
       <button type="button" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
     </ng-template>
   </div>
