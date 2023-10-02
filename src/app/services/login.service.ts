@@ -17,6 +17,10 @@ export class LoginService {
     return localStorage.getItem('token_type');
   }
 
+  getLocalBrowserExp() {
+    return '';
+  }
+
   login(email: string, senha:string) {
 
     const url = 'http://localhost:8000/api/login';
@@ -49,5 +53,12 @@ export class LoginService {
     localStorage.removeItem('token_type');
     localStorage.removeItem('expires_in_minutes');
     console.log('logout');
+  }
+
+  isExpired() {
+    //const expiration = this.getLocalBrowserExp();
+    //const timestamp = moment().unix();
+    //return timestamp > expiration;
+    return false;
   }
 }

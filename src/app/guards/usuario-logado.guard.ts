@@ -6,7 +6,7 @@ export const usuarioLogadoGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const loginService = inject(LoginService);
 
-  if(loginService.getToken()){
+  if(loginService.getToken() && !loginService.isExpired()){
     return true;
   } else {
     router.navigate(['login']);
