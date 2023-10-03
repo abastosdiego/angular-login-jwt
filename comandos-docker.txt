@@ -1,0 +1,4 @@
+ng build
+
+docker build -t my-angular-project .
+docker run -dit --name my-angular-project -p 8080:80 my-angular-project
