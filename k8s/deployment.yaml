@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-1
+  template:
+    metadata:
+      labels:
+        app: web-1
+    spec:
+      imagePullSecrets:
+        - name: docgitlab-com-registry
+      containers:
+        - name: web-1
+          image: abastosdiego/catalogo:1.0.0
+          ports:
+          - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-1
+spec:
+  selector:
+    app: web-1
+  ports:
+    - port: 8000 # porta do service
+      targetPort: 80 # porta do pod/deployment. Será feito um redirecionamento de portas.
+      nodePort: 30000
+  type: NodePort
+---
+
+
+
+### Para testar
+#http://localhost:8000/
+#http://localhost:8001/
+#http://localhost:8002/
+
+
+### Para rodar local usando k3d, configure da seguinte forma:
+#ports:
+#  - port: 80
+#    targetPort: 8080
+#    nodePort: 30000
+#type: NodePort
+
+### E crie o cluster da seguinte forma:
+### k3d cluster create meucluster -p "8000:30000@loadbalancer" -p "8001:30001@loadbalancer" -p "8002:30002@loadbalancer"
+### k3d cluster create meucluster -p "8000:30000@loadbalancer"
+
+### k3d cluster edit meucluster --port-add "8002:30002@loadbalancer"
+
+### k3d cluster create meucluster
+### k3d cluster edit meucluster --port-add "8000:30000@loadbalancer"
+### k3d cluster edit meucluster --port-add "8001:30001@loadbalancer"
+### k3d cluster edit meucluster --port-add "8002:30002@loadbalancer"
+
+### kubectl port-forward deployment/web 8080:8080
+
+### kubectl port-forward service/my-postgres 5432:5432
+
+### Service do tipo LoadBalancer cria um ip público para acesso ao cluster,
+### mas em ambientes on-premisse precisam de outras ferramentas para funcionar
+### como a MetalLB.
+#  ports:
+#    - port: 80
+#      targetPort: 8080 # porta do pod/deployment. Será feito um redirecionamento de portas.
+#  type: LoadBalancer

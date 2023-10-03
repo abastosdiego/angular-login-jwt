@@ -2,3 +2,12 @@ ng build
 
 docker build -t my-angular-project .
 docker run -dit --name my-angular-project -p 8080:80 my-angular-project
+
+
+Ambiente kubernetes:
+
+docker build -f Dockerfile -t abastosdiego/catalogo:1.0.0 .
+
+docker push abastosdiego/catalogo:1.0.0
+
+kubectl apply -f k8s/deployment.yaml
