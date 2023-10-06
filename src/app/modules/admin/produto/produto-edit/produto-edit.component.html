@@ -1,1 +1,35 @@
-<p>produto-edit works!</p>
+<div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+  {{mensagemSucesso}}
+</div>
+<form class="row g-3">
+  <ng-template [ngIf]="id">
+    <input type="hidden" name="id" id="id" value="{{produto.id}}" />
+  </ng-template>
+  <div class="col-md-8">
+    <label for="descricao" class="form-label">Descrição</label>
+    <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="produto.descricao" required>
+  </div>
+  <div class="col-md-4">
+    <label for="tipo_produto" class="form-label">Tipo Produto</label>
+    <select  class="form-control" id="tipo_produto" name="tipo_produto" [(ngModel)]="produto.tipo_produto" required>
+      <option *ngFor="let tipoProduto of tiposProdutos" value="{{tipoProduto.id}}">{{tipoProduto.descricao}}</option>
+    </select>
+  </div>
+  <div class="col-md-12">
+    <div class="row" *ngIf="id; else elseBlock">
+      <div class="col-md-1">
+        <button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-danger" (click)="excluir()">Excluir</button>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="row">
+        <div class="col-md-1">
+          <button type="button" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</form>

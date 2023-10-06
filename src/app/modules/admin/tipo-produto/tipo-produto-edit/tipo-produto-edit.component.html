@@ -11,18 +11,20 @@
   </div>
   <div class="col-md-4"></div>
   <div class="col-md-12">
-    <ng-template [ngIf]="id">
+    <div class="row" *ngIf="id; else elseBlock">
+      <div class="col-md-1">
+        <button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-danger" (click)="excluir()">Excluir</button>
+      </div>
+    </div>
+    <ng-template #elseBlock>
       <div class="row">
         <div class="col-md-1">
-          <button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
-        </div>
-        <div class="col-md-1">
-          <button type="button" class="btn btn-danger" (click)="excluir()">Excluir</button>
+          <button type="button" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
         </div>
       </div>
-    </ng-template>
-    <ng-template [ngIf]="id === undefined">
-      <button type="button" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
     </ng-template>
   </div>
 </form>

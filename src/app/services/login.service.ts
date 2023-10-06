@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-
   constructor(private http: HttpClient) { }
 
   getToken() {
@@ -60,5 +59,18 @@ export class LoginService {
     //const timestamp = moment().unix();
     //return timestamp > expiration;
     return false;
+  }
+
+  getHttpOptions() {
+    const autorization = this.getTokenType() + ' ' + this.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Accept': 'application/json',
+        'Authorization': autorization
+      })
+    };
+
+    return httpOptions;
   }
 }

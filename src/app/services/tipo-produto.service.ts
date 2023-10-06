@@ -9,39 +9,28 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class TipoProdutoService {
   private baseURL = `http://127.0.0.1:8000/api`;
-  private httpOptions: {headers: HttpHeaders};
+  //private httpOptions: {headers: HttpHeaders};
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
-
-    var autorization = this.loginService.getTokenType() + ' ' + this.loginService.getToken();
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Accept': 'application/json',
-        'Authorization': autorization
-      })
-    };
-
-   }
+  constructor(private http: HttpClient, private loginService: LoginService) {}
 
   getTiposProdutos(): Observable<TipoProduto[]> {
-    return this.http.get<TipoProduto[]>(`${this.baseURL}/tiposprodutos`, this.httpOptions);
+    return this.http.get<TipoProduto[]>(`${this.baseURL}/tiposprodutos`, this.loginService.getHttpOptions());
   }
 
   getTipoProduto(id: number): Observable<TipoProduto> {
-    return this.http.get<TipoProduto>(`${this.baseURL}/tiposprodutos/${id}`, this.httpOptions);
+    return this.http.get<TipoProduto>(`${this.baseURL}/tiposprodutos/${id}`, this.loginService.getHttpOptions());
   }
 
   cadastrarTipoProduto(tipoProduto: TipoProduto): Observable<any> {
-    return this.http.post(`${this.baseURL}/tiposprodutos`, tipoProduto, this.httpOptions);
+    return this.http.post(`${this.baseURL}/tiposprodutos`, tipoProduto, this.loginService.getHttpOptions());
   }
 
   alterarTipoProduto(tipoProduto: TipoProduto, id: number): Observable<any> {
-    return this.http.put(`${this.baseURL}/tiposprodutos/${id}`, tipoProduto, this.httpOptions);
+    return this.http.put(`${this.baseURL}/tiposprodutos/${id}`, tipoProduto, this.loginService.getHttpOptions());
   }
 
   excluirTipoProduto(id: number): Observable<any> {
-    return this.http.delete(`${this.baseURL}/tiposprodutos/${id}`, this.httpOptions);
+    return this.http.delete(`${this.baseURL}/tiposprodutos/${id}`, this.loginService.getHttpOptions());
   }
 
 }

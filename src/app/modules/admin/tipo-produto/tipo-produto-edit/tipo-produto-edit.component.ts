@@ -11,7 +11,6 @@ import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
 })
 export class TipoProdutoEditComponent implements OnInit {
   tipoProduto: TipoProduto;
-  inscricaoObservable!: Subscription;
   id?: number;
   mensagemSucesso: string = '';
 
@@ -32,16 +31,20 @@ export class TipoProdutoEditComponent implements OnInit {
 
   cadastrar() {
       this.tipoProdutoService.cadastrarTipoProduto(this.tipoProduto).subscribe(response => {
-        console.log(response);
-        this.router.navigate(['/admin/tiposprodutos']);
+        this.mensagemSucesso = response.message;
+        setTimeout(() => {
+          this.router.navigate(['/admin/tiposprodutos']);
+        }, 1500);
       })
   }
 
   editar() {
     if(this.id){
       this.tipoProdutoService.alterarTipoProduto(this.tipoProduto, this.id).subscribe(response => {
-        console.log(response);
-        this.router.navigate(['/admin/tiposprodutos']);
+        this.mensagemSucesso = response.message;
+        setTimeout(() => {
+          this.router.navigate(['/admin/tiposprodutos']);
+        }, 1500);
       })
     }
   }
@@ -49,8 +52,10 @@ export class TipoProdutoEditComponent implements OnInit {
   excluir() {
     if(this.id){
       this.tipoProdutoService.excluirTipoProduto(this.id).subscribe(response => {
-        console.log(response);
-        this.router.navigate(['/admin/tiposprodutos']);
+        this.mensagemSucesso = response.message;
+        setTimeout(() => {
+          this.router.navigate(['/admin/tiposprodutos']);
+        }, 1500);
       })
     }
   }

@@ -9,7 +9,6 @@ import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
   styleUrls: ['./tipo-produto-list.component.css']
 })
 export class TipoProdutoListComponent implements OnInit {
-  inscricaoObservable!: Subscription;
   tiposProdutos?: TipoProduto[];
 
   constructor(private tipoProdutoService: TipoProdutoService) {}
