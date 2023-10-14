@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent {
+  idTipoProdutoSelecionado: number | undefined;
 
+  changeIdTipoProdutoSelecionado(idTipoProdutoSelecionado: number) {
+    this.idTipoProdutoSelecionado = idTipoProdutoSelecionado;
+  }
 }

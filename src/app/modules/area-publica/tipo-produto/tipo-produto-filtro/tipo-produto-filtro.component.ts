@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TipoProduto } from 'src/app/models/tipo-produto-model';
 import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
 
@@ -10,6 +10,8 @@ import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
 export class TipoProdutoFiltroComponent implements OnInit {
   tiposProdutos?: TipoProduto[];
 
+  @Output() idTipoProdutoSelecionado = new EventEmitter<number>();
+
   constructor(private tipoProdutoService: TipoProdutoService) {}
 
   ngOnInit(): void {
@@ -17,5 +19,9 @@ export class TipoProdutoFiltroComponent implements OnInit {
       .subscribe(response => {
         this.tiposProdutos = response;
       });
+  }
+
+  selecionarTipoProduto(idTipoProduto: number | undefined) {
+    this.idTipoProdutoSelecionado.emit(idTipoProduto);
   }
 }

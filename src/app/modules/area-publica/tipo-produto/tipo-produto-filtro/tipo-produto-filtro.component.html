@@ -2,8 +2,8 @@
   <div *ngFor="let tipoProduto of tiposProdutos;" class="col-sm-2">
     <div class="card">
       <div class="card-body">
-        <a routerLink="/{{tipoProduto.id}}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-          <p class="card-title text-center small">{{tipoProduto.descricao}}</p>
+        <a href="#" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+          <p class="card-title text-center small" (click)="selecionarTipoProduto(tipoProduto.id)">{{tipoProduto.descricao}}</p>
         </a>
       </div>
     </div>

@@ -1,4 +1,5 @@
 export class TipoProduto {
   id?: number;
-  descricao: string = '';
+  descricao?: string;
+  id_imagem?: number;
 }

@@ -3,12 +3,14 @@
   <thead>
     <tr>
       <th scope="col">Descricao</th>
+      <th scope="col">Tipo Produto</th>
       <th scope="col" class="text-end">Editar</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let produto of produtos;">
       <th scope="row"><a routerLink="/admin/produtos/editar/{{produto.id}}">{{produto.descricao}}</a></th>
+      <th scope="row">{{produto.tipo_produto}}</th>
       <td class="text-end"><a routerLink="/admin/produtos/editar/{{produto.id}}">Editar</a></td>
     </tr>
   </tbody>

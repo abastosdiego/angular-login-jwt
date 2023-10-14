@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { IndexComponent } from './../../../admin/index/index/index.component';
+import { Component, Input, OnInit } from '@angular/core';
 import { Produto } from 'src/app/models/produto-model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -9,6 +10,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class ProdutoListComponent implements OnInit {
   produtos?: Produto[];
+  @Input() idTipoProdutoSelecionado: number | undefined;
 
   constructor(private produtoService: ProdutoService) {}
 
@@ -18,4 +20,5 @@ export class ProdutoListComponent implements OnInit {
         this.produtos = response;
       });
   }
+
 }

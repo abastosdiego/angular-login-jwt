@@ -9,7 +9,11 @@
     <label for="descricao" class="form-label">Descrição</label>
     <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="tipoProduto.descricao">
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <label for="imagem" class="form-label">Imagem</label>
+    <input type="file" class="form-control" id="imagem" name="imagem" (change)="onFileSelected($event)">
+    <input type="hidden" id="id_imagem" name="id_imagem" [(ngModel)]="tipoProduto.id_imagem">
+  </div>
   <div class="col-md-12">
     <div class="row" *ngIf="id; else elseBlock">
       <div class="col-md-1">
