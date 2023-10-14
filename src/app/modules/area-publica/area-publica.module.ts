@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/interceptors/token.interceptor';
 import { BaseTemplateComponent } from './base-template/base-template.component';
 import { TipoProdutoModule } from './tipo-produto/tipo-produto.module';
+import { ProdutoModule } from './produto/produto.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TipoProdutoModule } from './tipo-produto/tipo-produto.module';
   imports: [
     CommonModule,
     AreaPublicaRoutingModule,
-    TipoProdutoModule
+    TipoProdutoModule,
+    ProdutoModule
   ],
   providers: [
     {

@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TipoProduto } from 'src/app/models/tipo-produto-model';
 import { TipoProdutoService } from 'src/app/services/tipo-produto.service';
 
 @Component({
-  selector: 'app-tipo-produto-list-publico',
-  templateUrl: './tipo-produto-list.component.html',
-  styleUrls: ['./tipo-produto-list.component.css']
+  selector: 'app-tipo-produto-filtro',
+  templateUrl: './tipo-produto-filtro.component.html',
+  styleUrls: ['./tipo-produto-filtro.component.css']
 })
-export class TipoProdutoListComponent {
+export class TipoProdutoFiltroComponent implements OnInit {
   tiposProdutos?: TipoProduto[];
 
   constructor(private tipoProdutoService: TipoProdutoService) {}
